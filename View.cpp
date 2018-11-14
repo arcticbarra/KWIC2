@@ -34,6 +34,17 @@ int main()
   }
   else if (opt == 2)
   {
+    string word;
+    cout << "Enter number of words: ";
+    int number_of_words;
+    cin >> number_of_words;
+    number_of_words++;
+    cout << "Enter words (one per line):" << endl;
+    while (number_of_words--)
+    {
+      getline(cin, word);
+      stopWords.push_back(word);
+    }
   }
 
   cout << "1. Enter data by file" << endl;
@@ -55,13 +66,14 @@ int main()
     int number_of_lines;
     cin >> number_of_lines;
     number_of_lines++;
+    cout << "Enter lines:" << endl;
     while (number_of_lines--)
     {
       getline(cin, line);
       words.push_back(line);
     }
   }
-
+  cout << "----KWIC----" << endl;
   printer(words, stopWords, sortingType);
   return 0;
 }
