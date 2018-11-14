@@ -22,6 +22,7 @@ int main()
 
   cout << "1. Enter stop words by file" << endl;
   cout << "2. Enter stop words by terminal" << endl;
+  cout << "3. No stop words" << endl;
   cout << "Select option: ";
 
   cin >> opt;
