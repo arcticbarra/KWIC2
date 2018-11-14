@@ -15,9 +15,42 @@ vector<string> getStopWords(string nameFile)
   return stopWords;
 }
 
-void printer(vector<string> phrases, vector<string> stopWords, int sortingType)
+void removeLine(vector<string> &words, int index) 
 {
-  //Retrieving data
+  words.erase(words.begin() + index);
+}
+
+void displayLines(vector<string> words) 
+{
+  for(int i = 0; i < words.size(); i++) {
+    cout << i+1 << ". " << words[i] << endl;
+  }
+}
+
+vector<string> optionalRemoval(vector<string> words)
+{
+  int opt = 1;
+  int listSize;
+
+  while(opt != 0) {
+    listSize = words.size();
+    cout << "Enter line number to remove a line. Enter 0 to leave the list as it is." << endl;
+    cin >> opt;
+    while(opt > listSize) {
+      cout << "Invalid number entered. Try again or enter 0 to leave the list as it is." << endl;
+      cin >> opt;
+    }
+    if(opt != 0) {
+      removeLine(words, opt-1);
+      displayLines(words);
+    }
+  }
+  return words;
+}
+
+vector<string> producePermutations(vector<string> phrases, vector<string> stopWords, int sortingType) 
+{
+//Retrieving data
   size_t size = phrases.size();
   vector<string> results;
   for (size_t i = 0; i < size; i++)
@@ -57,7 +90,12 @@ void printer(vector<string> phrases, vector<string> stopWords, int sortingType)
       sort(results.begin(), results.end(), compare_by_word_desc);
     }
   }
+  
+  return results;
+}
 
+void printer(vector<string> results)
+{
   //Print result
   for (int i = 0; i < results.size(); i++)
   {
