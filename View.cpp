@@ -11,7 +11,7 @@ int main()
   int opt;
   int sortingType;
   string nameFile;
-  vector<string> stopWords, words;
+  vector<string> stopWords, words, filteredWords, results, filteredResults;
   //Load the data with fileToList() and process with printer()
   cout << "KWIC Program" << endl;
   cout << "1. ASC" << endl;
@@ -74,7 +74,14 @@ int main()
       words.push_back(line);
     }
   }
+  cout << "Results from input: " << endl;
+  displayLines(words);
+  filteredWords = optionalRemoval(words);
+  cout << "Results:" << endl;
+  results = producePermutations(filteredWords, stopWords, sortingType);
+  displayLines(results);
+  filteredResults = optionalRemoval(results);
   cout << "----KWIC----" << endl;
-  printer(words, stopWords, sortingType);
+  printer(filteredResults);
   return 0;
 }
