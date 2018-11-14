@@ -15,11 +15,13 @@ vector<string> getStopWords(string nameFile)
   return stopWords;
 }
 
-void removeLine(vector<string> &words, int index) {
+void removeLine(vector<string> &words, int index) 
+{
   words.erase(words.begin() + index);
 }
 
-void displayLines(vector<string> words) {
+void displayLines(vector<string> words) 
+{
   for(int i = 0; i < words.size(); i++) {
     cout << i+1 << ". " << words[i] << endl;
   }
@@ -46,7 +48,8 @@ vector<string> optionalRemoval(vector<string> words)
   return words;
 }
 
-vector<string> producePermutations(vector<string> phrases, vector<string> stopWords, int sortingType) {
+vector<string> producePermutations(vector<string> phrases, vector<string> stopWords, int sortingType) 
+{
 //Retrieving data
   size_t size = phrases.size();
   vector<string> results;
